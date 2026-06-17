@@ -20,8 +20,38 @@
             Console.WriteLine("1. Económico");
             Console.WriteLine("2. Confort");
             Console.WriteLine("3. Premium");
-            Console.WriteLine("3. Moto");
+            Console.WriteLine("4. Moto");
             int tipoVehiculo=int.Parse(Console.ReadLine());
+            //Variables para cálculo de tarifa
+            double tarifaBase=0;
+            double costoKm=0;
+            string tipoVehiculo="";
+            switch(tipoVehiculo)
+            {
+                case 1:
+                    tipoVehiculo="Económico";
+                    tarifaBase=2.00;
+                    costoKm=1.50;
+                    break;
+                case 2:
+                    tipoVehiculo="Confort";
+                    tarifaBase=3.00;
+                    costoKm=2.00;
+                    break;
+                case 3:
+                    tipoVehiculo="Premium";
+                    tarifaBase=5.00;
+                    costoKm=3.00;
+                    break;
+                case 4:
+                    tipoVehiculo="Moto";
+                    tarifaBase=1.5;
+                    costoKm=1.00;
+                    break;
+                default:
+                    Console.WriteLine("Tipo de vehículo no válido.");
+                    return;
+            }
         }
         else
         {
