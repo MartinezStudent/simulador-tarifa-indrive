@@ -46,10 +46,9 @@
             Console.Write("Cantidad de viajes realizadas por el conductor: "); //Regla 1: Cantidad de viajes
             int n = int.Parse(Console.ReadLine());
 
-            //Regla 3: Guardar los resultados en arreglos
+            //Regla 3: Guardar los resultados en arreglos (definir arreglos)
             double[] tarifas = new double[n];
             bool[] picoHora = new bool[n];
-            double distanciaTotal = 0; //Variable declarada para hacer pruebas de las reglas a implementar
 
             for (int i = 0; i < n; i++)// Regla 2: Registro y validación de cada viaje
             {
@@ -80,48 +79,65 @@
                     }
                 } while (!validacionDatos); //fin del do-while
             
+            //Regla 3: Guardar los resultados en arreglos (almacenar tarifas y hora pico)
             tarifas[i] = calcularTarifa(distanciaViaje, hora, vehiculo);
             picoHora[i] = esHoraPico(hora);
-            distanciaTotal += distanciaViaje; //Acumulación de la distancia total
             } //Fin del for
-/*
-            Console.WriteLine("----------------------------------");
-            if (esHoraPico(hora))
+            //Regla 4: Estadísticas de cierre de turno
+            static double calcularTotal(double[] tarifas) //Suma de tarifas del arreglo
             {
-                Console.WriteLine("Aplica recargo de hora pico (+30%)");
+                double totalViajes = 0;
+                for (int i = 0; i < tarifas.Length; i++)
+                {
+                    totalViajes += tarifas[i];
+                }
+                return totalViajes;
             }
-            else
+            static double calcularPromedio(double[] tarifas) //Tarifa promedio del día
             {
-                Console.WriteLine("No aplica recargo de hora pico");
+                return calcularTotal(tarifas) / tarifas.Length;
             }
-            if (distanciaViaje > 15)
-                Console.WriteLine("Aplica descuento por distancia larga (-5%)");
-            else
-                Console.WriteLine("No aplica descuento por distancia larga");
+            static double encontrarMaximo(double[] tarifas) //Tarifa más alta del día
+            {
+                double max = tarifas[0];
+                for (int i = 1; i < tarifas.Length; i++)
+                {
+                    if (tarifas[i] > max) max = tarifas[i];
+                }
+                return max;
+            }
+            static double encontrarMinimo(double[] tarifas) //Tarifa más baja del día
+            {
+                double min = tarifas[0];
+                for (int i = 1; i < tarifas.Length; i++)
+                {
+                    if (tarifas[i] < min) min = tarifas[i];
+                }
+                return min;
+            }
+            static int contarHoraPico(bool[] picoHora) //Contar viajes en hora pico
+            {
+                int contar = 0;
+                for (int i = 0; i < picoHora.Length; i++)
+                {
+                    if (picoHora[i]) contar++;
+                }
+                return contar;
+            }
+            //Regla 5: Mostrar resultados
+            double total = calcularTotal(tarifas);
+            double promedio = calcularPromedio(tarifas);
+            double maximo = encontrarMaximo(tarifas);
+            double minimo = encontrarMinimo(tarifas);
+            int viajesHoraPico = contarHoraPico(picoHora);
 
-            double tarifa = calcularTarifa(distanciaViaje, hora, vehiculo);
+            Console.WriteLine("\nResumen de cierre de turno");
             Console.WriteLine("----------------------------------");
-            */
-            //Adición de la suma de tarifas para el cierre de turno
-            double tarifaTotalPrueba = 0;
-            for (int i = 0; i < n; i++)
-            {
-                tarifaTotalPrueba += tarifas[i];
-            }
-            //Print de prueba en consola
-            Console.WriteLine($"Cantidad de viajes       : {n}");
-            Console.WriteLine($"Distancia total recorrida: {distanciaTotal} Km");
-            Console.WriteLine($"Tarifa total sumada      : S/ {tarifaTotalPrueba:F2}");
-
-            /*Resultado final- código inical
-            Console.WriteLine("\nSimulador de Tarifa - Indrive");
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine($"Pasajero     : {nombrePasajero}");
-            Console.WriteLine($"Distancia    : {distanciaViaje} Km");
-            Console.WriteLine($"Hora         : {hora}:00 hrs");
-            Console.WriteLine($"Tipo vehículo seleccionado   : {tipoVehiculo}");
-            Console.WriteLine("----------------------------------");
-            Console.WriteLine($"Tarifa final           : S/ {tarifa}");*/
-            
+            Console.WriteLine($"Número de viajes        : {n}");
+            Console.WriteLine($"Total ganado            : S/ {total:F2}");
+            Console.WriteLine($"Tarifa promedio         : S/ {promedio:F2}");
+            Console.WriteLine($"Viaje más rentable      : S/ {maximo:F2}");
+            Console.WriteLine($"Viaje más económico     : S/ {minimo:F2}");
+            Console.WriteLine($"Viajes en hora pico     : {viajesHoraPico}");
         }
     }
