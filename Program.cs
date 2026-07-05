@@ -45,13 +45,6 @@
 
             return Math.Round(subtotal, 2); //Regla 5: Redondeo
         }
-        //Adición de validación de datos
-        static bool esValido(double distanciaViaje, int hora, int tipoVehiculo)
-        {
-        return distanciaViaje > 0 
-        && (hora >= 0 && hora <= 23) 
-        && (tipoVehiculo >= 1 && tipoVehiculo <= 4);
-        }
         public static void Main(string[] args)
     {
         Console.WriteLine("InDrive - Simulador de Tarifas");
