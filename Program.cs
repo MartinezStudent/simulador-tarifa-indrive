@@ -1,5 +1,50 @@
  public class Program
     {
+        //Refactorización de código
+        static bool esHoraPico (int hora) //Regla 2: Recargo hora pico - separado
+        {
+            return (hora >= 7 && hora <= 9) || (hora >= 17 && hora <= 20);
+        }
+        static double calcularTarifa(double distanciaViaje, int hora, int tipoVehiculo)
+        {
+            double tarifaBase = 0;
+            double costoKm = 0;
+
+            switch (tipoVehiculo)
+            {
+                case 1: 
+                tarifaBase = 2.00; 
+                costoKm = 1.50; 
+                break;
+                case 2: 
+                tarifaBase = 3.00; 
+                costoKm = 2.00; 
+                break;
+                case 3: 
+                tarifaBase = 5.00; 
+                costoKm = 3.00; 
+                break;
+                case 4: 
+                tarifaBase = 1.50; 
+                costoKm = 1.00; 
+                break;
+            }
+            double subtotal=tarifaBase+(costoKm*distanciaViaje); //Regla 1: Cálculo de tarifa base por tipo de vehículo
+
+            if (esHoraPico(hora))
+            {
+                subtotal = subtotal * 1.30;
+            }
+
+            if (distanciaViaje > 15)//Regla 3: Descuento distancia larga
+            {
+                subtotal = subtotal * 0.95;
+            }
+
+            subtotal = Math.Max(subtotal, 5.00); //Regla 4: Tarifa mínima
+
+            return Math.Round(subtotal, 2); //Regla 5: Redondeo
+        }
         public static void Main(string[] args)
     {
         Console.WriteLine("InDrive - Simulador de Tarifas");
@@ -24,71 +69,40 @@
             Console.Write("Escriba el dígito correspondiente al tipo de vehículo: ");
             int vehiculo=int.Parse(Console.ReadLine());
 
-            //Variables para cálculo de tarifa
-            double tarifaBase=0;
-            double costoKm=0;
-            string tipoVehiculo="";//Se asignará según la selección del usuario (case)
-            switch(vehiculo)
+            string tipoVehiculo="";
+            switch (vehiculo)
             {
                 case 1:
-                    tipoVehiculo="Económico";
-                    tarifaBase=2.00;
-                    costoKm=1.50;
+                    tipoVehiculo = "Económico";
                     break;
                 case 2:
-                    tipoVehiculo="Confort";
-                    tarifaBase=3.00;
-                    costoKm=2.00;
+                    tipoVehiculo = "Confort";
                     break;
                 case 3:
-                    tipoVehiculo="Premium";
-                    tarifaBase=5.00;
-                    costoKm=3.00;
+                    tipoVehiculo = "Premium";
                     break;
                 case 4:
-                    tipoVehiculo="Moto";
-                    tarifaBase=1.5;
-                    costoKm=1.00;
+                    tipoVehiculo = "Moto";
                     break;
                 default:
                     Console.WriteLine("Tipo de vehículo no válido.");
                     return;
             }
-            Console.WriteLine("\nRealizando cálculos de tarifa...");
-            Console.WriteLine("----------------------------------");
-
-            //Asignación de reglas de problemática a resolver
-            
-            //Regla 1: Cálculo de tarifa base por tipo de vehículo
-            double subtotal=tarifaBase+(costoKm*distanciaViaje);
-
-            //Regla 2: Recargo hora pico
-            if ((hora >= 7 && hora <= 9) || (hora >= 17 && hora <= 20))
+             Console.WriteLine("----------------------------------");
+            if (esHoraPico(hora))
             {
-                subtotal = subtotal * 1.30;
                 Console.WriteLine("Aplica recargo de hora pico (+30%)");
             }
             else
             {
                 Console.WriteLine("No aplica recargo de hora pico");
             }
-
-            //Regla 3: Descuento distancia larga
             if (distanciaViaje > 15)
-            {
-                subtotal = subtotal * 0.95;
                 Console.WriteLine("Aplica descuento por distancia larga (-5%)");
-            }
             else
-            {
                 Console.WriteLine("No aplica descuento por distancia larga");
-            }
 
-            //Regla 4: Tarifa mínima
-            subtotal = Math.Max(subtotal, 5.00);
-
-            //Regla 5: Redondeo
-            double tarifa = Math.Round(subtotal, 2);
+            double tarifa = calcularTarifa(distanciaViaje, hora, vehiculo);
             Console.WriteLine("----------------------------------");
 
             //Resultado final

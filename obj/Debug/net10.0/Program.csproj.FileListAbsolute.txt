@@ -1,0 +1,15 @@
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\obj\Debug\net10.0\Program.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\obj\Debug\net10.0\Program.AssemblyInfoInputs.cache
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\obj\Debug\net10.0\Program.AssemblyInfo.cs
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\obj\Debug\net10.0\Program.csproj.CoreCompileInputs.cache
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\obj\Debug\net10.0\Program.sourcelink.json
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\bin\Debug\net10.0\Program.exe
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\bin\Debug\net10.0\Program.deps.json
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\bin\Debug\net10.0\Program.runtimeconfig.json
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\bin\Debug\net10.0\Program.dll
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\bin\Debug\net10.0\Program.pdb
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\obj\Debug\net10.0\Program.dll
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\obj\Debug\net10.0\refint\Program.dll
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\obj\Debug\net10.0\Program.pdb
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\obj\Debug\net10.0\Program.genruntimeconfig.cache
+C:\Users\BRAYAN\Desktop\UPN\Algorithm\simulador-tarifa-indrive\obj\Debug\net10.0\ref\Program.dll
